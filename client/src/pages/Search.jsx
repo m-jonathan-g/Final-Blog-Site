@@ -132,12 +132,18 @@ export default function Search() {
             >
               <option value="uncategorized">Uncategorized</option>
               <option value="health">Health</option>
+              <option value="weather">Weather</option>
+              <option value="accomodationr">Accommodation</option>
+              <option value="art and culture">Arts and Culture</option>
+              <option value="business">Business</option>
               <option value="food">Food</option>
               <option value="tech">Tech</option>
               <option value="music">Music</option>
+              <option value="entertainment">Entertainment</option>
               <option value="lifestyle">Lifestyle</option>
+              <option value="kids">Kids</option>
               <option value="fashion and design">Fashion and Design</option>
-              <option value="education">Educatin</option>
+              <option value="education">Education</option>
             </Select>
           </div>
           <Button type="submit" outline gradientDuoTone="purpleToPink">

@@ -10,6 +10,7 @@ export default function PostPage() {
   const [error, setError] = useState(false);
   const [post, setPost] = useState(null);
   const [recentPosts, setRecentPosts] = useState(null);
+  console.log(error);
 
   useEffect(() => {
     const fetchPost = async () => {
@@ -30,6 +31,7 @@ export default function PostPage() {
       } catch (error) {
         setError(true);
         setLoading(false);
+        console.log(error);
       }
     };
     fetchPost();
