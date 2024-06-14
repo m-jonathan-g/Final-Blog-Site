@@ -49,85 +49,79 @@ export default function Header() {
   };
 
   return (
-    <Navbar className="border-b-4 bg-blog sm:text-xl dark:text-white">
-      <div>
-        <Link className="text-lg font-bold whitespace-nowrap" to="/">
-          Bloggy<span className="text-white">BG</span>
-        </Link>
-        {/* <Link className="hidden text-sm font-bold md:inline" to="/">
-          Home
-        </Link>
-        <Link className="hidden text-sm font-bold md:inline" to="/dashboard">
-          Dashboard
-        </Link>
-        <Link className="hidden text-sm font-bold md:inline" to="/editor">
-          Editor
-        </Link>
-        <Link className="hidden text-sm font-bold md:inline" to="/about">
-          About
-        </Link> */}
-      </div>
-      <Navbar.Collapse>
-        <Navbar.Link active={path === "/"} as={"div"}>
-          <Link className="hidden text-sm font-bold md:inline" to="/">
-            Home
-          </Link>
-        </Navbar.Link>
-        <Navbar.Link active={path === "/dashboard"} as={"div"}>
-          <Link
-            className="hidden text-sm font-bold md:inline"
-            to="/dashboard?tab=dash"
-          >
-            Dashboard
-          </Link>
-        </Navbar.Link>
-        <Navbar.Link active={path === "/create-post"} as={"div"}>
-          <Link
-            className="hidden text-sm font-bold md:inline"
-            to="/create-post"
-          >
-            Editor
-          </Link>
-        </Navbar.Link>
-        <Navbar.Link active={path === "/about"} as={"div"}>
-          <Link className="hidden text-sm font-bold md:inline" to="/about">
-            About
-          </Link>
-        </Navbar.Link>
-      </Navbar.Collapse>
+    <Navbar className="border-b-4 bg-blog sm:text-xl dark:bg-blog">
       {currentUser ? (
-        <Dropdown
-          arrowIcon={false}
-          inline
-          label={<Avatar alt="user" img={currentUser.profilePicture} rounded />}
-        >
-          <Dropdown.Header>
-            <span className="block text-sm">@{currentUser.username}</span>
-            <span className="block text-sm font-medium truncate">
-              {currentUser.email}
-            </span>
-          </Dropdown.Header>
-          <Link to={"/dashboard?tab=profile"}>
-            <Dropdown.Item>Profile</Dropdown.Item>
-          </Link>
-          <Dropdown.Divider />
-          <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
-        </Dropdown>
+        <>
+          <Navbar.Toggle className="text-white dark:text-white bg-none " />
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar alt="user" img={currentUser.profilePicture} rounded />
+            }
+          >
+            <Dropdown.Header>
+              <span className="block text-sm">@{currentUser.username}</span>
+              <span className="block text-sm font-medium truncate">
+                {currentUser.email}
+              </span>
+            </Dropdown.Header>
+            <Dropdown.Item>
+              <Link to={"/dashboard?tab=profile"}>Profile</Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to={"/dashboard?tab=dash"}>Dashboard</Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to={"/create-post"}>Editor</Link>
+            </Dropdown.Item>
+            <Dropdown.Item>
+              <Link to={"/about"}>About</Link>
+            </Dropdown.Item>
+            <Dropdown.Item onClick={handleSignout}>Sign out</Dropdown.Item>
+          </Dropdown>
+        </>
       ) : (
         <Link to="/sign-in">
-          <Button className="bg-blog hover:opacity-70" outline>
+          <Button gradientDuoTone="purpleToBlue" outline>
             Sign In
           </Button>
         </Link>
       )}
+      <div>
+        <Link className="text-xl font-bold text-white whitespace-nowrap" to="/">
+          WAGZ
+        </Link>
+      </div>
+      <Navbar.Collapse>
+        <Navbar.Link active={path === "/"} as={"div"}>
+          <Link className="inline text-sm font-bold " to="/">
+            Home
+          </Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/dashboard?tab=dash"} as={"div"}>
+          <Link className="inline text-sm font-bold " to="/dashboard?tab=dash">
+            Dashboard
+          </Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/create-post"} as={"div"}>
+          <Link className="inline text-sm font-bold" to="/create-post">
+            Editor
+          </Link>
+        </Navbar.Link>
+        <Navbar.Link active={path === "/about"} as={"div"}>
+          <Link className="inline text-sm font-bold " to="/about">
+            About
+          </Link>
+        </Navbar.Link>
+      </Navbar.Collapse>
 
       <Button
-        className="inline w-12 h-10"
-        color="gray"
+        className="inline w-12 h-10 border-none"
         pill
         onClick={() => dispatch(toggleTheme())}
       >
-        {theme === "light" ? <FaSun /> : <FaMoon />}
+        {theme === "light" ? <FaMoon /> : <FaSun />}
       </Button>
       <form onSubmit={handleSubmit}>
         <TextInput
@@ -146,7 +140,7 @@ export default function Header() {
         pill
         color="gray"
       >
-        <AiOutlineSearch className="items-center justify-center text-2xl" />
+        <AiOutlineSearch className="items-center justify-center text-2xl dark:text-white" />
       </Button>
     </Navbar>
   );

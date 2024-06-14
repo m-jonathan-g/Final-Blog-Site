@@ -120,7 +120,7 @@ export default function CreatePost() {
               <option value="education">Education</option>
             </Select>
           </div>
-          <div className="flex items-center justify-between gap-4 p-3 border-4 border-teal-500 border-dotted">
+          <div className="flex items-center justify-between gap-4 p-3 border-4 border-dotted border-blog">
             <FileInput
               type="file"
               accept="image/*"

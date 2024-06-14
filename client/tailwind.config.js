@@ -7,7 +7,8 @@ export default {
   ],
   theme: {
     colors:{
-      "blog": "#28DFE3",
+      "light": "#D7A2A2",
+      "blog":"#A25A5A",
       "card": "#D9D9D9", 
       "layout": "#DFDDE5"
     },
