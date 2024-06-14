@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../redux/theme/themeSlice";
 import { signoutSuccess } from "../redux/user/userSlice";
 import { useEffect, useState } from "react";
+import { GrClose } from "react-icons/gr";
+import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function Header() {
   const path = useLocation().pathname;
@@ -15,6 +17,7 @@ export default function Header() {
   const { currentUser } = useSelector((state) => state.user);
   const { theme } = useSelector((state) => state.theme);
   const [searchTerm, setSearchTerm] = useState("");
+  const [showMenu, setShowMenu] = useState(false);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -49,33 +52,22 @@ export default function Header() {
   };
 
   return (
-    <Navbar className="border-b-4 bg-blog sm:text-xl dark:text-white">
+    <Navbar className="  sm:text-xl dark:text-white bg-blog">
       <div>
-        <Link className="text-lg font-bold whitespace-nowrap" to="/">
-          Bloggy<span className="text-white">BG</span>
+        <Link className=" font-extrabold p-3 my-7 whitespace-nowrap text-3xl text-black " to="/">
+        ✒️ Bloggy<span className="text-white">BG</span>
         </Link>
-        {/* <Link className="hidden text-sm font-bold md:inline" to="/">
-          Home
-        </Link>
-        <Link className="hidden text-sm font-bold md:inline" to="/dashboard">
-          Dashboard
-        </Link>
-        <Link className="hidden text-sm font-bold md:inline" to="/editor">
-          Editor
-        </Link>
-        <Link className="hidden text-sm font-bold md:inline" to="/about">
-          About
-        </Link> */}
+        
       </div>
       <Navbar.Collapse>
         <Navbar.Link active={path === "/"} as={"div"}>
-          <Link className="hidden text-sm font-bold md:inline" to="/">
+          <Link className="hidden text-2xl font-bold md:inline text-black p-3 hover:underline decoration-2 hover:text-opacity-80" to="/">
             Home
           </Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/dashboard"} as={"div"}>
           <Link
-            className="hidden text-sm font-bold md:inline"
+            className="hidden text-2xl text-black p-3 font-bold md:inline hover:underline decoration-2 hover:text-opacity-80"
             to="/dashboard?tab=dash"
           >
             Dashboard
@@ -83,14 +75,14 @@ export default function Header() {
         </Navbar.Link>
         <Navbar.Link active={path === "/create-post"} as={"div"}>
           <Link
-            className="hidden text-sm font-bold md:inline"
+            className="hidden font-bold md:inline text-black p-3 text-2xl hover:underline decoration-2 hover:text-opacity-80"
             to="/create-post"
           >
             Editor
           </Link>
         </Navbar.Link>
         <Navbar.Link active={path === "/about"} as={"div"}>
-          <Link className="hidden text-sm font-bold md:inline" to="/about">
+          <Link className="hidden font-bold md:inline text-2xl text-black p-3 hover:underline decoration-2 hover:text-opacity-80" to="/about">
             About
           </Link>
         </Navbar.Link>
@@ -99,7 +91,7 @@ export default function Header() {
         <Dropdown
           arrowIcon={false}
           inline
-          label={<Avatar alt="user" img={currentUser.profilePicture} rounded />}
+          label={<Avatar alt="user" img={currentUser.profilePicture} rounded  />}
         >
           <Dropdown.Header>
             <span className="block text-sm">@{currentUser.username}</span>

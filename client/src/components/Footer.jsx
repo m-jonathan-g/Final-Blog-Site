@@ -3,19 +3,19 @@ import { Link } from "react-router-dom";
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 export default function FooterCom() {
   return (
-    <Footer container className="border border-t-8 border-blog">
+    <Footer container className=" bg-blog">
       <div className="w-full mx-auto max-w-7xl">
         <div className="grid justify-between w-full sm:flex md:grid-cols-1">
           <div className="mt-5">
             <Link
               to="/"
-              className="self-center text-lg font-semibold whitespace-nowrap sm:text-xl dark:text-white"
+              className="font-extrabold p-3 my-7 whitespace-nowrap text-3xl text-black"
             >
-              Bloggy
+              Bloggy <span className="text-white">BG</span>
             </Link>
           </div>
-          <div className="grid grid-cols-2 gap-8 mt-4 sm:grid-cols-3 sm:gap-4">
-            <div className="inline">
+          <div>
+            <div className="inline text-black">
               <Footer.LinkGroup row>
                 <Footer.Link
                   href="/dashboard?tab=dash"
